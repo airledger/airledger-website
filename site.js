@@ -28,7 +28,7 @@
 
   // Monthly / yearly price toggle.
   var toggle = document.querySelector(".toggle");
-  toggle.addEventListener("click", function (e) {
+  if (toggle) toggle.addEventListener("click", function (e) {
     var btn = e.target.closest("button");
     if (!btn) return;
     var yearly = btn.dataset.period === "y";
@@ -40,7 +40,23 @@
   });
 
   // Waiting list.
+  // Demo request: opens the visitor's email app with the details filled in.
+  var demo = document.getElementById("demo");
+  if (demo) demo.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = Object.fromEntries(new FormData(demo).entries());
+    var m = document.getElementById("demo-msg");
+    if (!d.name.trim() || !d.business.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) {
+      m.textContent = "Please add your name, business and a valid email."; m.className = "msg err"; return;
+    }
+    var body = "Name: " + d.name + "\nBusiness: " + d.business + "\nEmail: " + d.email + "\nPhone: " + (d.phone || "-") +
+      "\nEngineers: " + d.engineers + "\nBest time: " + d.when + "\nWould like to see: " + (d.notes || "-");
+    location.href = "mailto:hello@airledger.co.uk?subject=" + encodeURIComponent("Demo request: " + d.business) + "&body=" + encodeURIComponent(body);
+    m.textContent = "Thanks. Send the email that just opened and we'll reply with a time."; m.className = "msg ok";
+  });
+
   var form = document.getElementById("wl");
+  if (!form) return;
   var msg = document.getElementById("wl-msg");
   function say(text, cls) { msg.textContent = text; msg.className = "msg " + (cls || ""); }
 
