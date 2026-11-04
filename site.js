@@ -2,7 +2,7 @@
 (function () {
   // Cloudflare Web Analytics: cookie-free visit counts. Paste the site token
   // from Cloudflare (Analytics & Logs > Web Analytics) to switch it on.
-  var CF_ANALYTICS_TOKEN = "";
+  var CF_ANALYTICS_TOKEN = "f4a28d34502b47a3b0742c94e1626cdc";
   if (CF_ANALYTICS_TOKEN) {
     var cf = document.createElement("script");
     cf.defer = true;
