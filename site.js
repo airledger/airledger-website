@@ -1,5 +1,16 @@
 // Air Ledger marketing site. No framework, no cookies.
 (function () {
+  // Cloudflare Web Analytics: cookie-free visit counts. Paste the site token
+  // from Cloudflare (Analytics & Logs > Web Analytics) to switch it on.
+  var CF_ANALYTICS_TOKEN = "";
+  if (CF_ANALYTICS_TOKEN) {
+    var cf = document.createElement("script");
+    cf.defer = true;
+    cf.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    cf.setAttribute("data-cf-beacon", JSON.stringify({ token: CF_ANALYTICS_TOKEN }));
+    document.head.appendChild(cf);
+  }
+
   // Live Supabase project. The anon key is public by design; the waiting list
   // can only be written to through the join_waitlist function, never read.
   var SUPABASE_URL = "https://txtdydgflwvzxjrfdbly.supabase.co";

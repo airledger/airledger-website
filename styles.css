@@ -234,3 +234,4 @@ h3{font-size:20px;font-weight:600}
 .foot .fl{flex-wrap:wrap;gap:10px 22px}
 @media (max-width:960px){.reasons.four{grid-template-columns:1fr}}
 .lede .tag{display:block;color:#fff;font-family:var(--fd);font-size:1.15em;margin-bottom:6px}
+.consent{font-size:13px;color:rgba(255,255,255,.55);text-align:center;margin:8px 0 0}.consent a{color:rgba(255,255,255,.8)}
